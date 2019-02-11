@@ -1,0 +1,10 @@
+SET 2 100
+cycle:
+IF EQU 0 2 end
+MULT_NUMBER 0 -1 3
+ADD 2 3 3
+ADD 1 3 1
+INC 0 1
+JUMP cycle
+end:
+SHOWS 1

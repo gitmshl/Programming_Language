@@ -1,0 +1,21 @@
+READ 0 295
+IF MORE_NUMBER 295 1 go
+ELSE end
+show:
+SHOWS 294
+INC 294 2
+JUMP cycle
+go:
+SET 294 2
+SHOWS 294
+SET 294 3
+cycle:
+IF MORE 294 295 end
+ELSE 0
+MOVE 294 298
+subprogram prime_predicate
+IF EQU_NUMBER 299 1 show
+ELSE 0
+INC 294 2
+JUMP cycle
+end:
