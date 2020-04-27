@@ -1,0 +1,15 @@
+[web] load http://python.org
+using docx
++ doc demo.docx
+for b in //html
+    +p doc "new version text"
+    for a in //html
+        +p doc "double cycle"
+        for c in //html
+            +p doc "third cycle"
+            for d in //html
+                for f in //html
+                    for p in //html
+                        +p doc "super deep cycle a->text"
+#        +p doc "a->text"
+save doc
