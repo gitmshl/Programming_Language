@@ -1,8 +1,11 @@
 from docx import Document
+from io import BytesIO
+import requests
+from docx.shared import Inches
 import mpp_exceptions
 
 
-key_words = ["save", "+", "+A4", "+h", "+p"]
+key_words = ["save", "+", "+A4", "+h", "+p", "+pict"]
 
 
 def handle_text(line, line_number, text, env):
@@ -117,6 +120,46 @@ def com_add_paragraph(line_lst, line, line_number, env):
     env[doc_name][0].add_paragraph(text)
 
 
+def com_add_picture(line_lst, line, line_number, env):
+    def parse_line():
+        if len(line_lst) not in (2, 3, 4, 5):
+            raise mpp_exceptions.SyntaxError(line, line_number, "Неверное число параметров.")
+        if len(line_lst) == 5:
+            doc_name, url, width, height = line_lst[1:]
+        elif len(line_lst) == 4:
+            doc_name = "docx_document__default__"
+            url, width, height = line_lst[1:]
+        elif len(line_lst) == 3:
+            doc_name, url = line_lst[1:]
+            width, height = None, None
+        else:
+            doc_name, url = "docx_document__default__", line_lst[1]
+            width, height = None, None
+
+        if doc_name not in env:
+            raise mpp_exceptions.UnknownVar(line, line_number, doc_name)
+        
+        if len(url) < 4 or url[:4] != "http":
+            url = handle_text(line, line_number, f'"{url}->get_attribute(\'src\')"', env)
+        try:
+            if not width is None:
+                width, height = float(width), float(height)
+            return doc_name, url, width, height
+        except:
+            raise mpp_exceptions.SyntaxError(line, line_number, "Некорректные параметры width и height.")
+        
+    doc_name, url, width, height = parse_line()
+    response = requests.get(url)
+    binary_img = BytesIO(response.content)
+    try:
+        if width is None:
+            env[doc_name][0].add_picture(binary_img)
+        else:
+            env[doc_name][0].add_picture(binary_img, width=Inches(width), height=Inches(height))
+    except:
+        print("add picture failure")
+
+
 def interpret_simple_command(line, line_number, env):
     line_lst = line.split() if line[0] != '[' else line.split()[1:]
     command = line_lst[0]
@@ -132,5 +175,7 @@ def interpret_simple_command(line, line_number, env):
         com_add_head(line_lst, line, line_number, env)
     elif command == "+p":
         com_add_paragraph(line_lst, line, line_number, env)
+    elif command == "+pict":
+        com_add_picture(line_lst, line, line_number, env)
     else:
         print(f"unknow command:{line}")    

@@ -69,7 +69,7 @@ def interpret_for_command(line, line_number, commands, env):
     var_name, driver, xpath = parse_for_expr()
     start, end = end_for(line, line_number + 1, commands, env)
     env['__scope__'] += 1
-    env['$_'] = 0
+    env['$_'] = 1
     for tmp in env[driver].find_elements_by_xpath(xpath):
         env[var_name] = tmp
         interpret(start, commands[:end+1], env)
@@ -155,7 +155,7 @@ def main():
             "__init__": {
                 "margin": 4
             },
-            "$_": 0,    # переменная цикла (счетчик)
+            "$_": 1,    # переменная цикла (счетчик)
             "module": "web",
             "driver__default__": None,
             "docx_document__default__": (None, None)

@@ -96,3 +96,12 @@ class VarTypeError(MyBaseException):
     def what(self):
         return f"Ошибка приведения значения переменной к строковому типу. Строка: {self.line_number}\n{self.line}"
                 
+
+class RuntimeError(MyBaseException):
+    def __init__(self, line, line_number, msg=""):
+        self.line_number = line_number + 1
+        self.line = line
+        self.msg = msg
+    
+    def what(self):
+        return f"Ошибка времени исполнения: {self.msg}. Строка: {self.line_number}\n{self.line}"

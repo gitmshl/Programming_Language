@@ -1,15 +1,123 @@
-[web] load http://python.org
+load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-01
 using docx
-+ doc demo.docx
-for b in //html
-    +p doc "new version text"
-    for a in //html
-        +p doc "double cycle"
-        for c in //html
-            +p doc "third cycle"
-            for d in //html
-                for f in //html
-                    for p in //html
-                        +p doc "super deep cycle a->text"
-#        +p doc "a->text"
-save doc
++ book.docx
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-02
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-03
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-04
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-05
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-06
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-07
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-08
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-09
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-10
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-11
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+[web] load https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:Potd/2019-12
+[web] get month //a[@class='mw-selflink selflink']
++h "month->text" 0
++A4
+for div in //div[@class='thumbinner']
+    +h "День $_" 4
+    [web] get image div->.//img
+    +pict image 5 5
+    +p "div->text"
+    +A4
+save
